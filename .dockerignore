@@ -1,0 +1,11 @@
+.git
+.idea
+.vscode
+logs/*
+!logs/README.md
+.env
+tests
+var/cache/*
+vendor
+phpunit.xml
+README.md
