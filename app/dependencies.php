@@ -19,6 +19,7 @@ return function (ContainerBuilder $containerBuilder) {
                 'displayErrorDetails' => true,
                 'logError' => false,
                 'logErrorDetails' => false,
+                // Configuracion de la base de datos
                 'db' => [
                     'host' => $_ENV['DB_HOST'] ?? 'localhost',
                     'port' => (int) ($_ENV['DB_PORT'] ?? 3306),
@@ -44,6 +45,7 @@ return function (ContainerBuilder $containerBuilder) {
             return $logger;
         },
 
+        // Conexion PDO a MySQL
         Database::class => function (ContainerInterface $c) {
             $settings = $c->get(SettingsInterface::class)->get('db');
 
@@ -56,10 +58,12 @@ return function (ContainerBuilder $containerBuilder) {
             );
         },
 
+        // Repositorio de doctores
         DoctorRepository::class => function (ContainerInterface $c) {
             return new DoctorRepository($c->get(Database::class));
         },
 
+        // Repositorio de hospitales
         HospitalRepository::class => function (ContainerInterface $c) {
             return new HospitalRepository($c->get(Database::class));
         },

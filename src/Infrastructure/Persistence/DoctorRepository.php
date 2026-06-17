@@ -7,6 +7,7 @@ namespace App\Infrastructure\Persistence;
 use App\Infrastructure\Database;
 use PDO;
 
+// Consultas SQL de la tabla doctor
 class DoctorRepository
 {
     private PDO $db;
@@ -16,6 +17,7 @@ class DoctorRepository
         $this->db = $database->getConnection();
     }
 
+    // Obtener todos los doctores con nombre del hospital
     public function findAll(): array
     {
         $sql = 'SELECT d.id_doctor, d.nombre, d.apellido, d.num_colegiado, d.id_hospital,
@@ -29,6 +31,7 @@ class DoctorRepository
         return $stmt->fetchAll();
     }
 
+    // Insertar un nuevo doctor
     public function create(array $data): int
     {
         $sql = 'INSERT INTO doctor (nombre, apellido, num_colegiado, id_hospital)

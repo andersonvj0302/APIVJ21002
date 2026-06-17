@@ -10,6 +10,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpNotFoundException;
 
+// GET /hospitales/{id} - obtener un hospital
 class GetHospitalAction extends Action
 {
     private HospitalRepository $hospitalRepository;

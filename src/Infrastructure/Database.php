@@ -7,6 +7,7 @@ namespace App\Infrastructure;
 use PDO;
 use PDOException;
 
+// Conexion a MySQL mediante PDO
 class Database
 {
     private PDO $connection;

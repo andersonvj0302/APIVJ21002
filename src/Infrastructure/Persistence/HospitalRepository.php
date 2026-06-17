@@ -7,6 +7,7 @@ namespace App\Infrastructure\Persistence;
 use App\Infrastructure\Database;
 use PDO;
 
+// Consultas SQL de la tabla hospital
 class HospitalRepository
 {
     private PDO $db;
@@ -16,6 +17,7 @@ class HospitalRepository
         $this->db = $database->getConnection();
     }
 
+    // Buscar hospital por ID con nombre de especialidad
     public function findById(int $id): ?array
     {
         $sql = 'SELECT h.id_hospital, h.nombre_hospital, h.direccion, h.telefono,
@@ -31,6 +33,7 @@ class HospitalRepository
         return $hospital ?: null;
     }
 
+    // Insertar un nuevo hospital
     public function create(array $data): int
     {
         $sql = 'INSERT INTO hospital (nombre_hospital, direccion, telefono, id_especialidad)

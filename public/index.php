@@ -12,7 +12,7 @@ use Slim\Factory\ServerRequestCreatorFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-// Variables de entorno (Render / Docker)
+// Cargar variables de entorno de Render
 foreach (['DB_HOST', 'DB_PORT', 'DB_NAME', 'DB_USER', 'DB_PASS'] as $envKey) {
     $value = getenv($envKey);
     if ($value !== false) {

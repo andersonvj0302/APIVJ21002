@@ -10,11 +10,13 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
 
+// Definicion de rutas de la API
 return function (App $app) {
     $app->options('/{routes:.*}', function (Request $request, Response $response) {
         return $response;
     });
 
+    // Pagina inicial con info de la API
     $app->get('/', function (Request $request, Response $response) {
         $payload = [
             'proyecto' => 'API Ministerio de Salud - VJ21002',
@@ -31,8 +33,11 @@ return function (App $app) {
         return $response->withHeader('Content-Type', 'application/json');
     });
 
+    // Endpoints de doctores
     $app->get('/doctores', ListDoctorsAction::class);
     $app->post('/doctores', CreateDoctorAction::class);
+
+    // Endpoints de hospitales
     $app->get('/hospitales/{id}', GetHospitalAction::class);
     $app->post('/hospitales', CreateHospitalAction::class);
 };

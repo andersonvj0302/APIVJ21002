@@ -9,6 +9,7 @@ use App\Infrastructure\Persistence\HospitalRepository;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpBadRequestException;
 
+// POST /hospitales - registrar un hospital
 class CreateHospitalAction extends Action
 {
     private HospitalRepository $hospitalRepository;
@@ -29,6 +30,7 @@ class CreateHospitalAction extends Action
             throw new HttpBadRequestException($this->request, 'Datos JSON invalidos.');
         }
 
+        // Validar campos obligatorios
         $required = ['nombre_hospital', 'direccion', 'telefono', 'id_especialidad'];
         foreach ($required as $field) {
             if (empty($data[$field])) {

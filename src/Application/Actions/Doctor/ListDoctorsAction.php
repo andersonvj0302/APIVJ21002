@@ -9,6 +9,7 @@ use App\Infrastructure\Persistence\DoctorRepository;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Exception\HttpBadRequestException;
 
+// GET /doctores - listar todos los doctores
 class ListDoctorsAction extends Action
 {
     private DoctorRepository $doctorRepository;
